@@ -9,33 +9,86 @@
 }
 
 body, html {
-	background-color: #001321;
-	overflow: hidden;
+	#overflow: hidden;
+    color: #ffffff;
+    font-family: Teko, sans-serif;
+    font-weight: normal;
+    font-size: 1.6em;
 }
 
 body {
 	height: 100vh;
 	width: 100vw;
+    overflow: hidden;
 }
 
 #particles-js {
 	width: 100vw;
 	height: 100vh;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 0;
+	z-index: -1;
 	margin: 0;
 	padding; 0;
-	overflow: hidden;
+    overflow: hidden;
+    background-color: #001321;
 }
 
 h1 {
-	font-family: 'NeonTubes2-Regular';
+	font-family: 'NeonTubes2-Regular', sans-serif;
 	font-size: 72px;
 	text-align: center;
 	text-transform: uppercase;
 	font-style: italic;
+    z-index: 10;
+}
+
+.clearfix {
+    clear: both;
+}
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+section {
+    border-radius: 40px;
+    background-color: rgba(0, 35, 52, 0.66);
+    margin: 1em 5em;
+    z-index: 20;
+    padding-bottom: 1em;
+}
+
+.well {
+    margin: 1em 1em 0 1em;
+    background-color: rgba(0, 27, 40, 0.66);
+    padding: 0.2em 1em;
+    border-radius: 40px;
+}
+
+section > h2 {
+    border-bottom-left-radius: 4em;
+    border-bottom-right-radius: 4em;
+    background-color: rgba(0, 27, 40, 0.66);
+    width: 95%;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 0;
+}
+
+td.score {
+    text-align: right;
+    width: 25%;
 }
 
 .red {
