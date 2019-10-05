@@ -1,0 +1,157 @@
+@font-face {
+  font-family: 'NeonTubes2-Regular';
+  src: url('/assets/NeonTubes2-Regular.eot');
+  src: url('/assets/NeonTubes2-Regular.eot?#iefix') format('embedded-opentype'),
+       url('/assets/NeonTubes2-Regular.woff') format('woff'),
+       url('/assets/NeonTubes2-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, html {
+	#overflow: hidden;
+    color: #ffffff;
+    font-family: Teko, sans-serif;
+    font-weight: normal;
+    font-size: 1.6em;
+}
+
+body {
+	height: 100vh;
+	width: 100vw;
+    overflow: hidden;
+}
+
+#particles-js {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	margin: 0;
+	padding; 0;
+    overflow: hidden;
+    background-color: #001321;
+}
+
+h1 {
+	font-family: 'NeonTubes2-Regular', sans-serif;
+	font-size: 72px;
+	text-align: center;
+	text-transform: uppercase;
+	font-style: italic;
+    z-index: 10;
+}
+
+.clearfix {
+    clear: both;
+}
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+section {
+    border-radius: 40px;
+    background-color: rgba(0, 35, 52, 0.66);
+    margin: 1em 5em;
+    z-index: 20;
+    padding-bottom: 1em;
+}
+
+.well {
+    margin: 1em 1em 0 1em;
+    background-color: rgba(0, 27, 40, 0.66);
+    padding: 0.2em 1em;
+    border-radius: 40px;
+}
+
+section > h2 {
+    border-bottom-left-radius: 4em;
+    border-bottom-right-radius: 4em;
+    background-color: rgba(0, 27, 40, 0.66);
+    width: 95%;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 0;
+}
+
+td.score {
+    text-align: right;
+    width: 25%;
+}
+
+.red {
+  color: #ffd9e2;
+  text-shadow: 0 0 0 transparent, 0 0 10px #ff003c, 0 0 20px rgba(255, 0, 60, 0.5), 0 0 40px #ff003c, 0 0 100px #ff003c, 0 0 200px #ff003c, 0 0 300px #ff003c, 0 0 500px #ff003c, 0 0 1000px #ff003c;
+}
+.blue {
+  color: #d4eaff;
+  text-shadow: 0 0 0 transparent, 0 0 10px #2695ff, 0 0 20px rgba(38, 149, 255, 0.5), 0 0 40px #2695ff, 0 0 100px #2695ff, 0 0 200px #2695ff, 0 0 300px #2695ff, 0 0 500px #2695ff;
+}
+
+.blink {
+  -webkit-animation: blink 4s infinite alternate;
+  animation: blink 4s infinite alternate;
+}
+
+.buzz {
+  -webkit-animation: buzz 0.1s infinite alternate;
+  animation: buzz 0.1s infinite alternate;
+}
+ 
+@-webkit-keyframes buzz {
+  70% {
+    opacity: 0.80;
+  }
+}
+ 
+@keyframes buzz {
+  70% {
+    opacity: 0.80;
+  }
+}
+@-webkit-keyframes blink {
+  40% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.8;
+  }
+  43% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.2;
+  }
+  46% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  40% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.8;
+  }
+  43% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.2;
+  }
+  46% {
+    opacity: 1;
+  }
+}
