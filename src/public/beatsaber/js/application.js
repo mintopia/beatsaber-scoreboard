@@ -12,5 +12,9 @@ var Leaderboard = {
         });
         html += '</table>';
         jQuery('#leaderboard').html(html);
+    },
+
+    updateName: function(name) {
+        jQuery('#name').html(name);
     }
 }

@@ -19,7 +19,7 @@
 </h1>
 
 <section>
-    <h2>{{ $leaderboard->name }}</h2>
+    <h2 id="name"></h2>
     <div class="well" id="leaderboard"></div>
 </section>
 

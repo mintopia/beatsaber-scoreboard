@@ -29,6 +29,8 @@ use Illuminate\Support\Facades\DB;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Leaderboard whereScoreType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Leaderboard whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $key
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Leaderboard whereKey($value)
  */
 class Leaderboard extends Model
 {
@@ -71,5 +73,23 @@ class Leaderboard extends Model
             ];
         });
         return $table->toArray();
+    }
+
+    public function addScore($name, $value)
+    {
+        DB::beginTransaction();
+        $player = Player::whereName($name)->first();
+        if (!$player) {
+            $player = new Player;
+            $player->name = $name;
+            $player->save();
+        }
+        $score = new Score;
+        $score->leaderboard()->associate($this);
+        $score->player()->associate($player);
+        $score->setScore($value);
+        $score->save();
+        DB::commit();
+        return $score;
     }
 }

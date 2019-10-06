@@ -13,19 +13,7 @@ class ScoreController extends Controller
 
     public function store(ScoreRequest $request, Leaderboard $leaderboard)
     {
-        DB::beginTransaction();
-        $player = Player::whereName($request->input('name'))->first();
-        if (!$player) {
-            $player = new Player;
-            $player->name = $request->input('name');
-            $player->save();
-        }
-        $score = new Score;
-        $score->leaderboard()->associate($leaderboard);
-        $score->player()->associate($player);
-        $score->setScore($request->input('score'));
-        $score->save();
-        DB::commit();
+        $leaderboard->addScore($request->input('name'), $request->input('score'));
         return response()->redirectToRoute('admin.leaderboards.show', $leaderboard)->with('successMessage', 'The score has been added');
     }
 

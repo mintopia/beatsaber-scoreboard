@@ -38,6 +38,7 @@ class LeaderboardController extends Controller
         $leaderboard->name = $request->input('name');
         $leaderboard->score_type = $request->input('score_type');
         $leaderboard->active = (bool) $request->input('active');
+        $leaderboard->key = $request->input('key');
         $leaderboard->save();
         return response()->redirectToRoute('admin.leaderboards.show', $leaderboard);
     }
