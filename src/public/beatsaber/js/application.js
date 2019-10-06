@@ -1,4 +1,4 @@
-particlesJS.load('particles-js', '/beatsaber/assets/particles.json', function() {
+particlesJS.load('particles-js', '/beatsaber/particles.json', function() {
   console.log('callback - particles.js config loaded');
 });
 

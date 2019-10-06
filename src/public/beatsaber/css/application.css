@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'NeonTubes2-Regular';
-  src: url('/beatsaber/assets/NeonTubes2-Regular.eot');
-  src: url('/beatsaber/assets/NeonTubes2-Regular.eot?#iefix') format('embedded-opentype'),
-       url('/beatsaber/assets/NeonTubes2-Regular.woff') format('woff'),
-       url('/beatsaber/assets/NeonTubes2-Regular.woff2') format('woff2');
+  src: url('/beatsaber/fonts/neontubes/NeonTubes2-Regular.eot');
+  src: url('/beatsaber/fonts/neontubes/NeonTubes2-Regular.eot?#iefix') format('embedded-opentype'),
+       url('/beatsaber/fonts/neontubes/NeonTubes2-Regular.woff') format('woff'),
+       url('/beatsaber/fonts/neontubes/NeonTubes2-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }

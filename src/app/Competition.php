@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Competition whereStyle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Competition whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $description
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Competition whereDescription($value)
  */
 class Competition extends Model
 {
