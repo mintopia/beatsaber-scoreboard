@@ -102,6 +102,9 @@
                             <li class="nav-item">
                                 <a href="{{ route('admin.apikeys.index') }}" class="nav-link"><i class="fa fa-key"></i> API Keys</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/laravel-websockets" class="nav-link"><i class="fa fa-dashboard"></i> Websocket Debug</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -16,4 +16,4 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware(['auth', 
     Route::resource('apikeys', 'ApiKeyController')->except(['show']);
 });
 
-Route::get('{competition}', 'CompetitionController@show')->name('competitions.show');
+Route::get('competitions/{competition}', 'CompetitionController@show')->name('competitions.show');
