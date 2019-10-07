@@ -37,4 +37,9 @@ class Score extends Model
     {
         return $this->belongsTo(Player::class);
     }
+
+    public function setScore($score)
+    {
+        $this->score = $score;
+    }
 }

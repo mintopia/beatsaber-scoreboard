@@ -78,7 +78,7 @@ class Leaderboard extends Model
     public function addScore($name, $value)
     {
         DB::beginTransaction();
-        $player = Player::whereName($name)->first();
+        $player = Player::where('name', $name)->first();
         if (!$player) {
             $player = new Player;
             $player->name = $name;
