@@ -33,14 +33,20 @@ class CompetitionController extends Controller
         return $this->edit($request, $competition);
     }
 
-    public function show(Competition $competition)
+    public function show(Request $request, Competition $competition)
     {
+        $params = [];
+        $query = $competition->leaderboards();
+        $query->orderBy('created_at', 'DESC');
+        $params['per_page'] = $request->input('page');
+        $leaderboards = $query->paginate($params['per_page'])->appends($params);
         return view('admin.competitions.show', [
-            'competition' => $competition
+            'competition' => $competition,
+            'leaderboards' => $leaderboards,
         ]);
     }
 
-    public function edit(CompetitionRequest $request, Competition $competition)
+    public function update(CompetitionRequest $request, Competition $competition)
     {
         $competition->name = $request->input('name');
         $competition->style = $request->input('style');

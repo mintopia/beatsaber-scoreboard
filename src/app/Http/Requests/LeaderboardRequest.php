@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
 
 class LeaderboardRequest extends FormRequest
 {
@@ -24,7 +26,10 @@ class LeaderboardRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'key' => 'required',
+            'score_type' => 'required|in:stPoints,stTime',
+            'active' => 'boolean'
         ];
     }
 }

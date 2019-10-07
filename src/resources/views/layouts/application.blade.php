@@ -51,7 +51,7 @@
             <div class="container">
                 <div class="d-flex">
                     <a class="header-brand" href="./index.html">
-                        <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="Leaderboards">
+                        Leaderboards
                     </a>
                     <div class="d-flex order-lg-2 ml-auto">
                         <div class="dropdown">
@@ -97,7 +97,7 @@
                                 <a href="{{ route('admin.competitions.index') }}" class="nav-link"><i class="fa fa-gamepad"></i> Competitions</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.players.index') }}" class="nav-link"><i class="fe fa-users"></i> Players</a>
+                                <a href="{{ route('admin.players.index') }}" class="nav-link"><i class="fa fa-users"></i> Players</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('admin.apikeys.index') }}" class="nav-link"><i class="fa fa-key"></i> API Keys</a>

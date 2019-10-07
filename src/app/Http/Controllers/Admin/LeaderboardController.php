@@ -6,6 +6,7 @@ use App\Competition;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LeaderboardRequest;
 use App\Leaderboard;
+use Illuminate\Http\Request;
 
 class LeaderboardController extends Controller
 {
@@ -20,17 +21,20 @@ class LeaderboardController extends Controller
     {
         $leaderboard = new Leaderboard;
         $leaderboard->competition()->associate($competition);
-        return $this->update($request, $competition);
+        return $this->update($request, $leaderboard);
     }
 
-    public function show(Leaderboard $leaderboard)
+    public function show(Request $request, Leaderboard $leaderboard)
     {
-        return view('admin.leaderboards.show', $leaderboard);
-    }
-
-    public function edit(Leaderboard $leaderboard)
-    {
-        return view('admin.leaderboards.edit', $leaderboard);
+        $params = [];
+        $query = $leaderboard->scores();
+        $query->orderBy('score', 'DESC');
+        $params['per_page'] = $request->input('page');
+        $scores = $query->paginate($params['per_page'])->appends($params);
+        return view('admin.leaderboards.show', [
+            'leaderboard' => $leaderboard,
+            'scores' => $scores,
+        ]);
     }
 
     public function update(LeaderboardRequest $request, Leaderboard $leaderboard)

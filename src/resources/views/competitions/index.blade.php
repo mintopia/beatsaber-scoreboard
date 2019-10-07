@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <p>{{ $competition->description }}</p>
-                        <a href="{{ route('competitions.show', $competition) }}" class="btn btn-block btn-primary">View Competition</a>
+                        <a href="{{ route('competitions.show', $competition) }}" class="btn btn-block btn-success">View Competition</a>
                     </div>
                 </div>
             </div>

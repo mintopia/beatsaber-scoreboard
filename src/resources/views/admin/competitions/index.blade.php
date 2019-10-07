@@ -9,11 +9,11 @@
     <div class="page-header">
         <h1>
             Competitions
-            <a class="btn btn-primary float-right" href="{{ route('admin.competitions.create') }}">
-                <span class="fa fa-plus"></span>
-                Add Competition
-            </a>
         </h1>
+        <a class="btn ml-auto btn-outline-success" href="{{ route('admin.competitions.create') }}">
+            <span class="fa fa-plus"></span>
+            Add Competition
+        </a>
     </div>
 
     <div class="row">

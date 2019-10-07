@@ -24,7 +24,10 @@ class CompetitionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'description' => 'required',
+            'active' => 'boolean',
+            'style' => 'required'
         ];
     }
 }
