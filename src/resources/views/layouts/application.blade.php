@@ -13,7 +13,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 
     <title>
         Leaderboards
@@ -57,7 +57,7 @@
                         <div class="dropdown">
                             @auth
                                 <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                                    <span class="avatar" style="{{ Auth::user()->avatar }}"></span>
+                                    <span class="avatar rounded" style="background-image: url('{{ Auth::user()->avatar }}');"></span>
                                     <span class="ml-2 d-none d-lg-block">
                                         <span class="text-default">{{ Auth::user()->nickname }}</span>
                                         @if (Auth::user()->admin)
@@ -66,14 +66,14 @@
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('logout') }}">
                                         <i class="dropdown-icon fe fe-log-out"></i> Logout
                                     </a>
                                 </div>
                             @endauth
                             @guest
                                 <div class="nav-item d-none d-md-flex">
-                                    <a href="#"><img src="/assets/images/steam_login.png" alt="Login with Steam" /></a>
+                                    <a href="{{ route('login') }}"><img src="/assets/images/steam_login.png" alt="Login with Steam" /></a>
                                 </div>
                             @endguest
                         </div>

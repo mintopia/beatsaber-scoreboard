@@ -14,7 +14,7 @@ class AddKeyToLeaderboards extends Migration
     public function up()
     {
         Schema::table('leaderboards', function (Blueprint $table) {
-            $table->string('key', )->nullable()->default(null)->after('name');
+            $table->string('key')->nullable()->default(null)->after('name');
         });
     }
 

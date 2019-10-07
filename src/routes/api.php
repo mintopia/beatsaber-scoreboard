@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +11,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth.api')->prefix('/v1/')->name('api.v1.')->namespace('Api/V1/')->group(function() {
+    Route::get('ping', function() {
+        return new \App\Http\Resources\Api\V1\PingResource(null);
+    })->name('ping');
 });

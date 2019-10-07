@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * App\User
@@ -32,7 +32,20 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends Model
+class User extends Authenticatable
 {
-    //
+
+    public static function getFromSteam(\Laravel\Socialite\Two\User $user)
+    {
+        $localUser = self::whereExternalId($user->id)->first();
+        if (!$localUser) {
+            $localUser = new User;
+            $localUser->external_id = $user->id;
+        }
+        $localUser->email = $user->email;
+        $localUser->avatar = $user->avatar;
+        $localUser->nickname = $user->nickname;
+        $localUser->save();
+        return $localUser;
+    }
 }
