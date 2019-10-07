@@ -50,13 +50,13 @@
         <div class="header py-4">
             <div class="container">
                 <div class="d-flex">
-                    <a class="header-brand" href="./index.html">
+                    <a class="header-brand" href="{{ route('home') }}">
                         Leaderboards
                     </a>
                     <div class="d-flex order-lg-2 ml-auto">
                         <div class="dropdown">
                             @auth
-                                <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                                <a href="javascript:void();" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                                     <span class="avatar rounded" style="background-image: url('{{ Auth::user()->avatar }}');"></span>
                                     <span class="ml-2 d-none d-lg-block">
                                         <span class="text-default">{{ Auth::user()->nickname }}</span>
