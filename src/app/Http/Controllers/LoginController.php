@@ -27,5 +27,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
+        return response()->redirectToIntended(route('home'))->with('successMessage', 'You have been logged out');
     }
 }

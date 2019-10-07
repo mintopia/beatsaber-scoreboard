@@ -110,6 +110,20 @@
         @endif
         <div class="my-3 my-md-5">
             <div class="container">
+                @if ($message = Session::get('successMessage'))
+                    <div class="alert alert-success alert-block">
+                       {{ $message }}
+                    </div>
+
+                @endif
+
+
+                @if ($message = Session::get('errorMessage'))
+                    <div class="alert alert-danger alert-block">
+                       {{ $message }}
+                    </div>
+                @endif
+                
                 @yield('content')
             </div>
         </div>
