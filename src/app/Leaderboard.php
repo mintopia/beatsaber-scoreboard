@@ -84,8 +84,14 @@ class Leaderboard extends Model
 
     public function addScore($name, $value)
     {
-        DB::beginTransaction();
+        // See if we already exist
+        $existing = Score::where('score', $value)->whereHas('player', function($query) use ($name) {
+            $query->where('name', $name);
+        })->first();
         $player = Player::where('name', $name)->first();
+        if ($existing) {
+            return $existing;
+        }
         if (!$player) {
             $player = new Player;
             $player->name = $name;
@@ -96,7 +102,6 @@ class Leaderboard extends Model
         $score->player()->associate($player);
         $score->setScore($value);
         $score->save();
-        DB::commit();
         return $score;
     }
 }
