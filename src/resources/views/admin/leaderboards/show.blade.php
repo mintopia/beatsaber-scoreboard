@@ -62,11 +62,30 @@
                                     <span title="{{ $score->created_at->format('Y-m-d H:i:s') }}">{{ $score->created_at->diffForHumans() }}</span>
                                 </td>
                                 <td class="w-1">
-                                    <form action="{{ route('admin.scores.destroy', $score) }}" method="post" class="form-inline">
-                                        {{ csrf_field() }}
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fe fe-trash"></i></button>
-                                    </form>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#deleteScoreModal{{ $score->id }}"><i class="fe fe-trash"></i></button>
+
+                                    <div class="modal fade" id="deleteScoreModal{{ $score->id }}" tabindex="-1" role="dialog" aria-labelledby="delete-link" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Delete Score</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure you want to delete a score of <strong>{{ $score->score }}</strong> for <strong>{{ $score->player->name }}</strong>?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="{{ route('admin.scores.destroy', $score) }}" method="post">
+                                                        {{ csrf_field() }}
+                                                        @method('DELETE')
+                                                        <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+                                                        <button class="btn btn-danger ml-auto" type="submit">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
