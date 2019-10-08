@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PlayerRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class PlayerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,18 @@ class PlayerRequest extends FormRequest
      */
     public function rules()
     {
+        $nameRules = [
+            'required',
+            'max:200',
+        ];
+        $player = $this->route()->parameter('player');
+        if ($player) {
+            $nameRules[] = Rule::unique('players')->ignore($player);
+        } else {
+            $nameRules[] = 'unique:players';
+        }
         return [
-            'name' => 'required|max:200'
+            'name' => $nameRules
         ];
     }
 }

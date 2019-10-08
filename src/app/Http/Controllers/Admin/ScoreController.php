@@ -19,6 +19,6 @@ class ScoreController extends Controller
     public function destroy(Score $score)
     {
         $score->delete();
-        return response()->redirectToRoute('admin.leaderboards.show', $score->leaderboard)->with('successMessage', 'The score has been deleted');
+        return back()->with('successMessage', 'The score has been deleted');
     }
 }

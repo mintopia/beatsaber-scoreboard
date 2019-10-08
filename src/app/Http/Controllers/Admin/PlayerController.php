@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PlayerRequest;
 use App\Player;
 use Illuminate\Http\Request;
 
@@ -21,10 +22,27 @@ class PlayerController extends Controller
         ]);
     }
 
-    public function show(Player $player)
+    public function store(PlayerRequest $request)
     {
+        $player = new Player;
+        return $this->update($request, $player);
+    }
+
+    public function show(Request $request, Player $player)
+    {
+
+        $params = [];
+        $query = $player->scores()->with([
+            'leaderboard',
+            'leaderboard.competition',
+        ]);
+        $query->orderBy('created_at', 'DESC');
+
+        $params['per_page'] = $request->input('per_page', 10);
+        $scores = $query->paginate($params['per_page'])->appends($params);
         return view('admin.players.show', [
-            'player' => $player
+            'player' => $player,
+            'scores' => $scores,
         ]);
     }
 
@@ -37,11 +55,12 @@ class PlayerController extends Controller
 
     public function update(PlayerRequest $request, Player $player)
     {
-        $player->name = $request->name;
+        $player->name = $request->input('name');
+        $player->save();
         return response()->redirectToRoute('admin.players.show', $player);
     }
 
-    public function delete(Player $player)
+    public function destroy(Player $player)
     {
         $player->delete();
         return response()->redirectToRoute('admin.players.index')->with('successMessage', 'The player has been deleted');

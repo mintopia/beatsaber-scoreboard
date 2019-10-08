@@ -23,7 +23,7 @@
                     @include('admin.apikeys._form')
                 </div>
                 <div class="card-footer text-right">
-                    <button class="btn btn-primary ml-auto" type="submit">Add</button>
+                    <button class="btn btn-success ml-auto" type="submit">Add</button>
                 </div>
             </form>
         </div>
