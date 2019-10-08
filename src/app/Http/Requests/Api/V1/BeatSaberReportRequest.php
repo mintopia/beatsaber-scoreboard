@@ -24,9 +24,9 @@ class BeatSaberReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'key' => 'required',
-            'name' => 'required',
-            'score' => 'required',
+            'key' => 'required|max:2000',
+            'name' => 'required|max:200',
+            'score' => 'required|numeric',
         ];
     }
 }

@@ -26,8 +26,8 @@ class LeaderboardRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'key' => 'required',
+            'name' => 'required|max:200',
+            'key' => 'required|max:2000',
             'score_type' => 'required|in:stPoints,stTime',
             'active' => 'boolean'
         ];
