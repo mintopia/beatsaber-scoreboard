@@ -85,7 +85,11 @@
                         </table>
                     </div>
                     <div class="tab-pane" id="tab-request-body">
-                        <pre class="m-0"><code class="language-json">{{ $log->request_body }}</code></pre>
+                        @if (json_decode($log->request_body))
+                            <pre class="m-0"><code class="language-json">{{ json_encode(json_decode($log->request_body), JSON_PRETTY_PRINT) }}</code></pre>
+                        @else
+                            <pre class="m-0"><code class="language-html5">{{ $log->request_body }}</code></pre>
+                        @endif
                     </div>
                     <div class="tab-pane" id="tab-response-headers">
                         <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
