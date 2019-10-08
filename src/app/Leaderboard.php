@@ -44,6 +44,15 @@ class Leaderboard extends Model
         return $this->hasMany(Score::class)->orderBy('score', 'DESC');
     }
 
+    public function ensureOnlyActiveBoard()
+    {
+        $others = $this->competition->leaderboards()->where('active', true)->where('id', '<>', $this->id)->get();
+        foreach ($others as $other) {
+            $other->active = false;
+            $other->save();
+        }
+    }
+
     public function uniqueScores()
     {
         switch ($this->score_type) {

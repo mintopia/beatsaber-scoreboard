@@ -14,6 +14,9 @@ class LeaderboardObserver
      */
     public function created(Leaderboard $leaderboard)
     {
+        if ($leaderboard->active) {
+            $leaderboard->ensureOnlyActiveBoard();
+        }
         $leaderboard->competition->pushUpdate();
     }
 
@@ -25,6 +28,9 @@ class LeaderboardObserver
      */
     public function updated(Leaderboard $leaderboard)
     {
+        if ($leaderboard->active) {
+            $leaderboard->ensureOnlyActiveBoard();
+        }
         $leaderboard->competition->pushUpdate();
     }
 
