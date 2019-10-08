@@ -43,6 +43,8 @@
     <script src="/assets/plugins/maps-google/plugin.js"></script>
     <!-- Input Mask Plugin -->
     <script src="/assets/plugins/input-mask/plugin.js"></script>
+    <link href="/assets/css/prism.css" rel="stylesheet" />
+    <script src="/assets/js/prism.js"></script>
 </head>
 <body class="">
 <div class="page">
@@ -101,6 +103,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('admin.apikeys.index') }}" class="nav-link"><i class="fa fa-key"></i> API Keys</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.apilogs.index') }}" class="nav-link"><i class="fa fa-file-text-o"></i> API Logs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('admin.users.index') }}" class="nav-link"><i class="fa fa-users"></i> Users</a>

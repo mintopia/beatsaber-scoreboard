@@ -15,6 +15,7 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware(['auth', 
     Route::resource('scores', 'ScoreController')->only(['destroy']);
     Route::resource('apikeys', 'ApiKeyController')->except(['show']);
     Route::resource('users', 'UserController')->except(['show']);
+    Route::resource('apilogs', 'ApiLogController')->only(['index', 'show']);
 });
 
 Route::get('competitions/{competition}', 'CompetitionController@show')->name('competitions.show');

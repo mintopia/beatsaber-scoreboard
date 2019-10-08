@@ -26,5 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ApiKey extends Model
 {
-    //
+    public function logs()
+    {
+        return $this->hasMany(ApiLog::class);
+    }
 }
