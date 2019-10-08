@@ -88,10 +88,10 @@ class Leaderboard extends Model
         $existing = $this->scores()->where('score', $value)->whereHas('player', function($query) use ($name) {
             $query->where('name', $name);
         })->first();
-        $player = Player::where('name', $name)->first();
         if ($existing) {
             return $existing;
         }
+        $player = Player::where('name', $name)->first();
         if (!$player) {
             $player = new Player;
             $player->name = $name;

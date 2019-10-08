@@ -5,28 +5,30 @@ namespace App\Http\Controllers\Api\V1;
 use App\Competition;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\BeatSaberReportRequest;
-use App\Leaderboard;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Resources\Api\V1\ScoreResource;
+use App\Jobs\ProcessBeatSaberScore;
 
 class ReportController extends Controller
 {
     public function beatsaber(BeatSaberReportRequest $request, Competition $competition)
     {
-        DB::beginTransaction();
-        $leaderboard = $competition->leaderboards()->where('key', $request->input('key'))->first();
-        if (!$leaderboard) {
-            $leaderboard = new Leaderboard;
-            $leaderboard->competition()->associate($competition);
-            $leaderboard->key = $request->input('key');
-            $leaderboard->name = $leaderboard->key;
-            $leaderboard->save();
+        $key = $request->input('key');
+        $lbName = $key;
+        $metadata = $request->input('metadata');
+
+        if ($metadata) {
+            $lbName = $metadata['beatmap']['name'];
+            if ($metadata['beatmap']['key'] != $key) {
+                $lbName .= ' - ' . $metadata['difficulty'];
+            }
         }
+        $payload = (object) [
+            'key' => $key,
+            'name' => $request->input('name'),
+            'score' => $request->input('score'),
+            'leaderboardName' => $lbName,
+        ];
 
-        $score = $leaderboard->addScore($request->input('name'), $request->input('score'));
-
-        DB::commit();
-        return new ScoreResource($score);
+        ProcessBeatSaberScore::dispatch($competition, $payload);
+        return response(null, 202);
     }
 }
