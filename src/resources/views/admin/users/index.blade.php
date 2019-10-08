@@ -77,11 +77,9 @@
                         </tbody>
                     </table>
                 </div>
-                @if ($users->hasMorePages())
-                    <div class="card-footer">
-                        {{ $users->links() }}
-                    </div>
-                @endif
+                @include('partials._pagination', [
+                    'page' => $users
+                ])
             </div>
         </div>
     </div>

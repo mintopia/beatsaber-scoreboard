@@ -53,11 +53,9 @@
                         </tbody>
                     </table>
                 </div>
-                @if ($players->hasMorePages())
-                    <div class="card-footer">
-                        {{ $players->links() }}
-                    </div>
-                @endif
+                @include('partials._pagination', [
+                    'page' => $players
+                ])
             </div>
         </div>
     </div>

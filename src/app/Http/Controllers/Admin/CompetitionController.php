@@ -38,11 +38,11 @@ class CompetitionController extends Controller
         $params = [];
         $query = $competition->leaderboards();
         $query->orderBy('created_at', 'DESC');
-        $params['per_page'] = $request->input('page');
+        $params['per_page'] = $request->input('per_page', 10);
         $leaderboards = $query->paginate($params['per_page'])->appends($params);
         return view('admin.competitions.show', [
             'competition' => $competition,
-            'leaderboards' => $leaderboards,
+            'leaderboards' => $leaderboards
         ]);
     }
 

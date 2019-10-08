@@ -22,7 +22,7 @@
     </div>
 
 
-    @if ($competitions->hasMorePages() )
+    @if ($competitions->total() > $competitions->count() )
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">

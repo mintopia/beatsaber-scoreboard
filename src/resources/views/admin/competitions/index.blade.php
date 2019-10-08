@@ -50,11 +50,9 @@
                         </tbody>
                     </table>
                 </div>
-                @if ($competitions->hasMorePages())
-                    <div class="card-footer">
-                        {{ $competitions->links() }}
-                    </div>
-                @endif
+                @include('partials._pagination', [
+                    'page' => $competitions
+                ])
             </div>
         </div>
     </div>

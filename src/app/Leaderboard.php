@@ -44,7 +44,7 @@ class Leaderboard extends Model
         return $this->hasMany(Score::class)->orderBy('score', 'DESC');
     }
 
-    public function topScores($limit)
+    public function uniqueScores()
     {
         switch ($this->score_type) {
             case ScoreType::TIME:
@@ -55,16 +55,23 @@ class Leaderboard extends Model
                 break;
         }
 
-        $scores = $this->scores()
+        return $this->scores()
             ->select([
+                'id',
                 DB::raw('MAX(score) AS score'),
-                'player_id'
+                'player_id',
+                'leaderboard_id',
+                'created_at',
+                'updated_at',
             ])
-            ->limit($limit)
             ->orderByRaw($order)
             ->with('player')
-            ->groupBy('player_id')
-            ->get();
+            ->groupBy('player_id');
+    }
+
+    public function topScores($limit)
+    {
+        $scores = $this->uniqueScores()->limit($limit)->get();
 
         $table = $scores->map(function (Score $score) {
             return (object) [

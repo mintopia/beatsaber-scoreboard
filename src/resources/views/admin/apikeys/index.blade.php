@@ -88,11 +88,9 @@
                         </tbody>
                     </table>
                 </div>
-                @if ($apikeys->hasMorePages())
-                    <div class="card-footer">
-                        {{ $apikeys->links() }}
-                    </div>
-                @endif
+                @include('partials._pagination', [
+                    'page' => $apikeys
+                ])
             </div>
         </div>
     </div>

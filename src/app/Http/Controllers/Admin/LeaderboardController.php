@@ -27,13 +27,19 @@ class LeaderboardController extends Controller
     public function show(Request $request, Leaderboard $leaderboard)
     {
         $params = [];
-        $query = $leaderboard->scores();
-        $query->orderBy('score', 'DESC');
-        $params['per_page'] = $request->input('page');
+        if ($request->input('unique', false)) {
+            $params['unique'] = true;
+            $query = $leaderboard->uniqueScores();
+        } else {
+            $query = $leaderboard->scores()->orderBy('score', 'DESC');
+        }
+
+        $params['per_page'] = $request->input('per_page', 10);
         $scores = $query->paginate($params['per_page'])->appends($params);
         return view('admin.leaderboards.show', [
             'leaderboard' => $leaderboard,
             'scores' => $scores,
+            'params' => $params,
         ]);
     }
 

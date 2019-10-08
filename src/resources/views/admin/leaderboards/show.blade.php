@@ -38,6 +38,24 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Scores</h3>
+
+                    <form class="card-options" method="get" action="{{ route('admin.leaderboards.show', $leaderboard) }}">
+                        <label class="custom-switch m-0">
+                            <input type="checkbox" value="1" class="custom-switch-input" id="uniqueBtn" name="unique"@if(isset($params['unique']) && $params['unique']) checked="checked"@endif>
+                            <span class="custom-switch-indicator"></span>
+                            <span class="custom-switch-description">Unique Scores</span>
+                        </label>
+                        <script type="text/javascript">
+                            requirejs(['jquery'], function(jQuery) {
+                                jQuery(document).ready(function() {
+                                    jQuery("#uniqueBtn").change(function(evt) {
+                                        jQuery('#uniqueBtn').parents('form').submit();
+                                    });
+                                });
+                            });
+                        </script>
+                    </form>
+
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
@@ -92,11 +110,9 @@
                         </tbody>
                     </table>
                 </div>
-                @if ($scores->hasMorePages())
-                    <div class="card-footer">
-                        {{ $scores->links() }}
-                    </div>
-                @endif
+                @include('partials._pagination', [
+                    'page' => $scores
+                ])
             </div>
         </div>
 

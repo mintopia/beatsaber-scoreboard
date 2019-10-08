@@ -73,11 +73,9 @@
                         </tbody>
                     </table>
                 </div>
-                @if ($leaderboards->hasMorePages())
-                    <div class="card-footer">
-                        {{ $leaderboards->links() }}
-                    </div>
-                @endif
+                @include('partials._pagination', [
+                    'page' => $leaderboards
+                ])
             </div>
         </div>
     </div>
