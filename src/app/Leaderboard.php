@@ -85,7 +85,7 @@ class Leaderboard extends Model
     public function addScore($name, $value)
     {
         // See if we already exist
-        $existing = Score::where('score', $value)->whereHas('player', function($query) use ($name) {
+        $existing = $this->scores()->where('score', $value)->whereHas('player', function($query) use ($name) {
             $query->where('name', $name);
         })->first();
         $player = Player::where('name', $name)->first();
