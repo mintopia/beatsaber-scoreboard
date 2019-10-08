@@ -17,38 +17,34 @@ class ApiKeyController extends Controller
         $params['per_page'] = $request->input('per_page', 10);
         $keys = $query->paginate($params['per_page'])->appends($params);
         return view('admin.apikeys.index', [
-            'keys' => $keys
+            'apikeys' => $keys
         ]);
-    }
-
-    public function create()
-    {
-        return view('admin.apikeys.create');
     }
 
     public function store(ApiKeyRequest $request)
     {
-        $key = new ApiKey;
-        $this->update($request, $key);
+        $apikey = new ApiKey;
+        return $this->update($request, $apikey);
     }
 
-    public function edit(ApiKey $key)
+    public function edit(ApiKey $apikey)
     {
         return view('admin.apikeys.edit', [
-            'key' => $key
+            'apikey' => $apikey
         ]);
     }
 
-    public function update(ApiKeyRequest $request, ApiKey $key)
+    public function update(ApiKeyRequest $request, ApiKey $apikey)
     {
-        $key->description = $request->input('description');
-        $key->save();
+        $apikey->description = $request->input('description');
+        $apikey->active = (bool) $request->input('active');
+        $apikey->save();
         return response()->redirectToRoute('admin.apikeys.index');
     }
 
-    public function delete(ApiKey $key)
+    public function destroy(ApiKey $apikey)
     {
-        $key->delete();
+        $apikey->delete();
         return response()->redirectToRoute('admin.apikeys.index')->with('successMessage', 'The key has been deleted');
     }
 }

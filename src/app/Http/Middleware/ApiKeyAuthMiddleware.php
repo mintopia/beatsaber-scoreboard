@@ -17,7 +17,7 @@ class ApiKeyAuthMiddleware
     public function handle($request, Closure $next)
     {
         $bearerToken = $request->bearerToken();
-        $apiKey = ApiKey::where('key', $bearerToken)->first();
+        $apiKey = ApiKey::where('key', $bearerToken)->where('active', true)->first();
         if (!$apiKey) {
             abort(403, 'Invalid API Key');
         }

@@ -25,10 +25,8 @@
                     @include('admin.competitions._form')
                 </div>
                 <div class="card-footer text-right">
-                    <form action="{{ route('admin.competitions.destroy', $competition) }}" class="d-flex">
-                        <button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                        <button class="btn btn-primary ml-auto" type="submit">Save</button>
-                    </form>
+                    <button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    <button class="btn btn-primary ml-auto" type="submit">Save</button>
                 </div>
             </form>
         </div>

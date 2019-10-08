@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiKey whereKey($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiKey whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $active
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiKey whereActive($value)
  */
 class ApiKey extends Model
 {

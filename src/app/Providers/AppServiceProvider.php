@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\ApiKey;
 use App\Leaderboard;
+use App\Observers\ApiKeyObserver;
 use App\Observers\LeaderboardObserver;
 use App\Observers\ScoreObserver;
 use App\Score;
@@ -29,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Score::observe(ScoreObserver::class);
         Leaderboard::observe(LeaderboardObserver::class);
+        ApiKey::observe(ApiKeyObserver::class);
     }
 }

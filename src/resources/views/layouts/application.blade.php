@@ -94,16 +94,16 @@
                                 <a href="{{ route('home') }}" class="nav-link"><i class="fe fe-home"></i> Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.competitions.index') }}" class="nav-link"><i class="fa fa-gamepad"></i> Competitions</a>
+                                <a href="{{ route('admin.competitions.index') }}" class="nav-link"><i class="fa fa-trophy"></i> Competitions</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.players.index') }}" class="nav-link"><i class="fa fa-users"></i> Players</a>
+                                <a href="{{ route('admin.players.index') }}" class="nav-link"><i class="fa fa-gamepad"></i> Players</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('admin.apikeys.index') }}" class="nav-link"><i class="fa fa-key"></i> API Keys</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/laravel-websockets" class="nav-link"><i class="fa fa-dashboard"></i> Websocket Debug</a>
+                                <a href="{{ route('admin.users.index') }}" class="nav-link"><i class="fa fa-users"></i> Users</a>
                             </li>
                         </ul>
                     </div>
