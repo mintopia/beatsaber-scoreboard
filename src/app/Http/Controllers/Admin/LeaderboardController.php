@@ -47,7 +47,7 @@ class LeaderboardController extends Controller
         return response()->redirectToRoute('admin.leaderboards.show', $leaderboard);
     }
 
-    public function delete(Leaderboard $leaderboard)
+    public function destroy(Leaderboard $leaderboard)
     {
         $leaderboard->delete();
         return response()->redirectToRoute('admin.competitions.show', $leaderboard->competition)->with('successMessage', 'The leaderboard has been deleted');

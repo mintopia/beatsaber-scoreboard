@@ -26,7 +26,7 @@
                 </div>
                 <div class="card-footer text-right">
                     <form action="{{ route('admin.competitions.destroy', $competition) }}" class="d-flex">
-                        <a class="btn btn-outline-danger" href="javascript:void();">Delete</a>
+                        <button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
                         <button class="btn btn-primary ml-auto" type="submit">Save</button>
                     </form>
                 </div>
@@ -80,6 +80,29 @@
                         {{ $leaderboards->links() }}
                     </div>
                 @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="delete-link" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Competition</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete <strong>{{ $competition->name }}</strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ route('admin.competitions.destroy', $competition) }}" method="post">
+                        {{ csrf_field() }}
+                        @method('DELETE')
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger ml-auto" type="submit">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

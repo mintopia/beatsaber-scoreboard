@@ -30,7 +30,7 @@ class CompetitionController extends Controller
     public function store(CompetitionRequest $request)
     {
         $competition = new Competition;
-        return $this->edit($request, $competition);
+        return $this->update($request, $competition);
     }
 
     public function show(Request $request, Competition $competition)
@@ -56,7 +56,7 @@ class CompetitionController extends Controller
         return response()->redirectToRoute('admin.competitions.show', $competition);
     }
 
-    public function delete(Competition $competition)
+    public function destroy(Competition $competition)
     {
         $competition->delete();
         return response()->redirectToRoute('admin.competitions.index')->with('successMessage', 'The competition has been removed');
