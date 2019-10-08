@@ -17,7 +17,7 @@
             <form class="card" method="post" action="{{ route('admin.apikeys.store') }}">
                 {{ csrf_field() }}
                 <div class="card-header">
-                    <h3 class="card-title">Add API Key</h3>
+                    <h3 class="card-title">Add Key</h3>
                 </div>
                 <div class="card-body">
                     @include('admin.apikeys._form')
@@ -30,9 +30,6 @@
 
         <div class="col-lg-9 col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">API Keys</h3>
-                </div>
                 <div class="table-responsive">
                     <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
                         <thead>
