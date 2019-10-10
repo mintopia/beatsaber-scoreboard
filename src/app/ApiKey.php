@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property int $active
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiKey whereActive($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ApiLog[] $logs
+ * @property-read int|null $logs_count
  */
 class ApiKey extends Model
 {

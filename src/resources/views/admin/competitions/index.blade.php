@@ -25,6 +25,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Follow Scores</th>
                                 <th>Active</th>
                                 <th>Style</th>
                             </tr>
@@ -35,6 +36,14 @@
                                     <td class="text-muted">{{ $competition->id }}</td>
                                     <td>
                                         <a href="{{ route('admin.competitions.show', $competition) }}">{{ $competition->name }}</a>
+                                    </td>
+                                    <td>
+                                        @if ($competition->follow_scores)
+                                        <span class="status-icon bg-success"></span>
+                                            Following
+                                        @else<span class="status-icon bg-warning"></span>
+                                            Not Following
+                                        @endif
                                     </td>
                                     <td>
                                         @if ($competition->active)

@@ -23,6 +23,16 @@
 </div>
 <div class="form-group">
     <label class="custom-switch">
+        <input type="checkbox" name="follow_scores" class="custom-switch-input" @if(old('active', isset($competition) ? $competition->follow_scores : false)) checked="checked"@endif value="1">
+        <span class="custom-switch-indicator"></span>
+        <span class="custom-switch-description">Follow Scores</span>
+    </label>
+    @error('follow_scores')
+    <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+<div class="form-group">
+    <label class="custom-switch">
         <input type="checkbox" name="active" class="custom-switch-input" @if(old('active', isset($competition) ? $competition->active : false)) checked="checked"@endif value="1">
         <span class="custom-switch-indicator"></span>
         <span class="custom-switch-description">Active</span>

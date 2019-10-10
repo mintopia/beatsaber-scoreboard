@@ -51,6 +51,7 @@ class CompetitionController extends Controller
         $competition->name = $request->input('name');
         $competition->style = $request->input('style');
         $competition->active = (bool) $request->input('active');
+        $competition->follow_scores = (bool) $request->input('follow_scores');
         $competition->description = $request->input('description');
         $competition->save();
         return response()->redirectToRoute('admin.competitions.show', $competition);

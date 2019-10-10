@@ -6,6 +6,41 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * App\ApiLog
+ *
+ * @property int $id
+ * @property string $uri
+ * @property string $method
+ * @property string $ip
+ * @property object|null $request_headers
+ * @property object|null $request_body
+ * @property int $response_code
+ * @property object|null $response_headers
+ * @property object|null $response_body
+ * @property int $duration
+ * @property int|null $apikey_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\ApiKey|null $apikey
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereApikeyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereDuration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereRequestBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereRequestHeaders($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereResponseBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereResponseCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereResponseHeaders($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ApiLog whereUri($value)
+ * @mixin \Eloquent
+ */
 class ApiLog extends Model
 {
     protected $casts = [

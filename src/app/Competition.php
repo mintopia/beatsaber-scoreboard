@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property string $description
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Competition whereDescription($value)
+ * @property int $follow_scores
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Competition whereFollowScores($value)
  */
 class Competition extends Model
 {

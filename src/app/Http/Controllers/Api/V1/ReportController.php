@@ -15,6 +15,11 @@ class ReportController extends Controller
         $lbName = $key;
         $metadata = $request->input('metadata');
 
+        // We will ignore posts with a difficulty
+        if (strpos($key, '-') !== false) {
+            return response(null, 202);
+        }
+
         if ($metadata) {
             $lbName = $metadata['beatmap']['name'];
             if ($metadata['beatmap']['key'] != $key) {

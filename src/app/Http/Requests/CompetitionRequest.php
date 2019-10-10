@@ -27,6 +27,7 @@ class CompetitionRequest extends FormRequest
             'name' => 'required|max:200',
             'description' => 'required|max:500',
             'active' => 'boolean',
+            'follow_scores' => 'boolean',
             'style' => 'required|max:200'
         ];
     }

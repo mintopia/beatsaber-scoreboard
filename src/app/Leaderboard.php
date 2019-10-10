@@ -111,6 +111,10 @@ class Leaderboard extends Model
         $score->player()->associate($player);
         $score->setScore($value);
         $score->save();
+        if ($this->competition->follow_scores) {
+            $this->competition->active = true;
+            $this->competition->save();
+        }
         return $score;
     }
 }
