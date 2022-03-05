@@ -20,6 +20,13 @@ class LeaderboardObserver
         $leaderboard->competition->pushUpdate();
     }
 
+    public function creating(Leaderboard $leaderboard)
+    {
+        if (!$leaderboard->name) {
+            $leaderboard->updateFromBeatSaver();
+        }
+    }
+
     /**
      * Handle the Leaderboard "updated" event.
      *
@@ -32,6 +39,13 @@ class LeaderboardObserver
             $leaderboard->ensureOnlyActiveBoard();
         }
         $leaderboard->competition->pushUpdate();
+    }
+
+    public function update(Leaderboard $leaderboard)
+    {
+        if (!$leaderboard->name) {
+            $leaderboard->updateFromBeatSaver();
+        }
     }
 
     /**

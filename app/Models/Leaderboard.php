@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Exceptions\MapNotFoundException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class Leaderboard extends Model
 {
@@ -26,6 +28,23 @@ class Leaderboard extends Model
         foreach ($others as $other) {
             $other->active = false;
             $other->save();
+        }
+    }
+
+    // TODO: Refactor to service
+    public function updateFromBeatSaver()
+    {
+        if (!$this->key) {
+            return;
+        }
+        if ($this->name) {
+            return;
+        }
+        $response = Http::get("https://api.beatsaver.com/maps/hash/{$this->key}");
+        if ($response->successful()) {
+            $this->name = $response->json('name');
+        } else {
+            throw new MapNotFoundException;
         }
     }
 

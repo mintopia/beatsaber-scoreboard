@@ -13,20 +13,13 @@ class ReportController extends Controller
     public function beatsaber(BeatSaberReportRequest $request, Competition $competition)
     {
         $key = $request->input('key');
-        $lbName = $key;
         $metadata = $request->input('metadata');
 
-        if ($metadata) {
-            $lbName = $metadata['beatmap']['name'];
-            if ($metadata['beatmap']['key'] != $key) {
-                $lbName .= ' - ' . $metadata['difficulty'];
-            }
-        }
         $payload = (object) [
             'key' => $key,
-            'name' => $request->input('name'),
             'score' => $request->input('score'),
-            'leaderboardName' => $lbName,
+            'difficulty' => $metadata['difficulty'],
+            'name' => $request->input('name'),
         ];
 
         ProcessBeatSaberScore::dispatch($competition, $payload);

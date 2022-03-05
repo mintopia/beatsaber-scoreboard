@@ -13,13 +13,16 @@ class CompetitionRefresh implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    protected Competition $competition;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(protected Competition $competition)
+    public function __construct(Competition $competition)
     {
+        $this->competition = $competition;
     }
 
     public function broadcastOn()

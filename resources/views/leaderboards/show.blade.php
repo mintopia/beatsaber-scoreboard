@@ -13,7 +13,7 @@
             port: '{{ env('PUBLIC_PUSHER_PORT') }}',
             appId: '{{ env('PUSHER_APP_ID') }}',
             channel: 'competition.{{ $leaderboard->competition->id }}',
-            @if(env('PUSHER_FORCE_TLS'))
+            @if(env('PUSHER_PUBLIC_FORCE_TLS'))
                 forceTLS: true,
             @endif
         };

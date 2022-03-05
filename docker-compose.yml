@@ -26,6 +26,12 @@ services:
             - "6001:6001"
         volumes:
             - .:/app
+    queue:
+        image: 1and1internet/php-build-environment:8.1-xdebug
+        entrypoint: "/usr/bin/php /app/artisan queue:listen"
+        volumes:
+            - .:/app
+
     composer:
         image: 1and1internet/php-build-environment:8.1-xdebug
         entrypoint: composer
