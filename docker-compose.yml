@@ -1,0 +1,55 @@
+version: '3'
+services:
+    redis:
+        image: redis:6-alpine
+
+    database:
+        image: mariadb:10.7
+        environment:
+            - MARIADB_USER=${DB_USERNAME}
+            - MARIADB_PASSWORD=${DB_PASSWORD}
+            - MARIADB_DATABASE=${DB_DATABASE}
+            - MARIADB_RANDOM_ROOT_PASSWORD=1
+        volumes:
+            - ./storage/database:/var/lib/mysql
+    web:
+        image: 1and1internet/php-build-environment:8.1-xdebug
+        entrypoint: "/usr/bin/php /app/artisan serve --host=0.0.0.0"
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/app
+    websocket:
+        image: 1and1internet/php-build-environment:8.1-xdebug
+        entrypoint: "/usr/bin/php /app/artisan websockets:serve --host=0.0.0.0"
+        ports:
+            - "6001:6001"
+        volumes:
+            - .:/app
+    composer:
+        image: 1and1internet/php-build-environment:8.1-xdebug
+        entrypoint: composer
+        volumes:
+            - .:/app
+        profiles:
+            - composer
+
+    npm:
+        image: node:16-alpine
+        entrypoint: npm
+        working_dir: /app
+        volumes:
+            - .:/app
+        profiles:
+            - npm
+
+    artisan:
+        image: 1and1internet/php-build-environment:8.1-xdebug
+        entrypoint: "/usr/bin/php /app/artisan"
+        volumes:
+            - .:/app
+        profiles:
+            - artisan
+        depends_on:
+            - redis
+            - database
